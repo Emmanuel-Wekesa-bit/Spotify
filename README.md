@@ -71,56 +71,54 @@ In advanced stages, the focus shifts to improving query performance. Some optimi
 ### Easy Level
 1. Retrieve the names of all tracks that have more than 1 billion streams.
 ---
-SELECT track,album_type FROM spotify
-WHERE album_type = 'single';
+<img width="411" height="51" alt="image" src="https://github.com/user-attachments/assets/a2da8f17-fc8d-4c2f-b9d9-fcdfa36b33f5" />
+
 ---
 2. List all albums along with their respective artists.
 ---
-SELECT DISTINCT album,artist FROM spotify;
+<img width="365" height="27" alt="image" src="https://github.com/user-attachments/assets/49b4a515-2b5a-426f-97a2-b3dda32a4a71" />
+
 ---
 3. Get the total number of comments for tracks where `licensed = TRUE`.
 ---
-SELECT track,licensed, SUM(comments) AS Total_comments FROM spotify
-WHERE licensed = 'TRUE';
+<img width="580" height="45" alt="image" src="https://github.com/user-attachments/assets/914f5e41-cbb1-4a17-8d01-04db9fefcfb1" />
+
 ---
 4. Find all tracks that belong to the album type `single`.
 ---
-SELECT track,album_type FROM spotify
-WHERE album_type = 'single';
+<img width="321" height="42" alt="image" src="https://github.com/user-attachments/assets/59cd5dfd-ec55-44de-980d-79a104dd3833" />
+
 ---
 5. Count the total number of tracks by each artist.
 ---
-SELECT artist, COUNT(track) AS Number_of_tracks FROM spotify
-GROUP BY artist ORDER BY artist DESC;
+<img width="528" height="45" alt="image" src="https://github.com/user-attachments/assets/a2546ce0-8d2b-4909-8be6-f5a8e3d23d3c" />
+
 ---
 ### Medium Level
 1. Calculate the average danceability of tracks in each album.
 ---
-SELECT album, AVG(danceability) AS Average_danceability FROM spotify
-GROUP BY album,danceability ORDER BY Average_danceability DESC;
+<img width="587" height="40" alt="image" src="https://github.com/user-attachments/assets/7fcc0a12-5b1c-49af-9c07-bb71ffdec4d3" />
+
 ---
 2. Find the top 5 tracks with the highest energy values.
 ---
-SELECT track, MAX(energy) FROM spotify
-GROUP BY track,energy ORDER BY energy DESC
-LIMIT 5;
+<img width="590" height="47" alt="image" src="https://github.com/user-attachments/assets/5314ee10-e72f-41b7-9a53-308abac7bd48" />
+
 ---
 3. List all tracks along with their views and likes where `official_video = TRUE`.
 ---
-SELECT track,views,likes,official_video FROM spotify
-WHERE official_video = 'TRUE' ORDER BY 2,3 DESC;
+<img width="481" height="46" alt="image" src="https://github.com/user-attachments/assets/070f8785-1285-4da0-a82b-9e9c6b13bdd7" />
+
 ---
 4. For each album, calculate the total views of all associated tracks.
 ---
-SELECT album, SUM(views) AS Total_views FROM spotify
-GROUP BY album ORDER BY Total_views DESC;
+<img width="479" height="50" alt="image" src="https://github.com/user-attachments/assets/29d01cce-90cc-4aa4-b858-ab1070a1b8d7" />
+
 ---
 5. Retrieve the track names that have been streamed on Spotify more than YouTube.
 ---
-SELECT track,
- CAST(SUM(CASE WHEN most_played_on = 'Spotify' THEN stream END) DECIMAL(10, 2)) AS streamed_on_spotify,
- CAST(SUM(CASE WHEN most_played_on = 'Spotify' THEN stream END) DECIMAL(10, 2)) AS streamed_on_spotify
- FROM spotify GROUP BY track;
+<img width="886" height="86" alt="image" src="https://github.com/user-attachments/assets/906398b6-f3ce-4b8d-ae19-828ba1e6a10f" />
+
 ---
 ### Advanced Level
 1. Find the top 3 most-viewed tracks for each artist using window functions.
